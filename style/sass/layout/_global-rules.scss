@@ -1,0 +1,141 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&family=Licorice&family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+* {
+  outline: none;
+}
+html {
+  scroll-behavior: smooth;
+
+  body {
+    font-family: "Poppins", sans-serif;
+    @if $lang == "ar" {
+      font-family: "Cairo", sans-serif;
+    }
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+}
+
+// Global
+body > {
+  .setting {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    overflow: hidden;
+
+    > * {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      z-index: $zindex-fixed;
+      @extend %center-flex;
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      i {
+        font-size: 20px;
+      }
+    }
+    // Gear Button
+    .options {
+      background-color: white;
+
+      i {
+        animation: rotate 3s linear infinite;
+      }
+      @keyframes rotate {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+    // Theme Button
+    .theme {
+      position: relative;
+      background-color: #222;
+      @if $theme == "dark" {
+        background-color: white;
+      }
+
+      button {
+        position: absolute;
+        transition: top 0.3s, bottom 0.3s;
+        &.light {
+          top: -25px;
+
+          i {
+            color: black;
+          }
+        }
+        &.dark {
+          bottom: -25px;
+
+          i {
+            color: white;
+          }
+        }
+        @if $theme == "dark" {
+          &.light {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          &.dark {
+            bottom: -25px;
+          }
+        }
+        @if $theme == "light" {
+          &.light {
+            top: -25px;
+          }
+          &.dark {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+  // Scroll to top
+  .scroll-top {
+    @extend %center-flex;
+    position: fixed;
+    bottom: 10px;
+    right: -100px;
+    width: 30px;
+    height: 30px;
+    z-index: $zindex-fixed;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: right 0.5s;
+    background-color: white;
+    &.show {
+      right: 10px;
+    }
+
+    i {
+      font-size: 20px;
+    }
+  }
+}
