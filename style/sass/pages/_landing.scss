@@ -10,7 +10,6 @@ main.landing {
   }
 
   .container {
-    @extend %center-flex;
     height: 100%;
     @media ($max-small) {
       flex-direction: column;
@@ -23,7 +22,6 @@ main.landing {
         text-align: center;
       }
       > {
-        @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
         .job {
           overflow: hidden;
           user-select: none;
@@ -32,7 +30,7 @@ main.landing {
           animation: landing-title 2s linear forwards;
           font: {
             size: 50px;
-            family: "Major Mono Display", monospace;
+            family: $Major;
           }
           @keyframes landing-title {
             from,
@@ -96,7 +94,6 @@ main.landing {
             }
           }
           .social {
-            @extend %center-flex;
             width: 20px;
             gap: 10px;
             flex-direction: column;

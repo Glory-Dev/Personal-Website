@@ -1,7 +1,7 @@
 $duration: 0.3s;
 // Global
-$lang: "en";
-$theme: "light";
+$lang: "en"; // Language
+$theme: "light"; // Theme
 // Media Queries
 $min-mobile: "min-width: 576px";
 $mobile: "max-width: 575.98px";
@@ -19,8 +19,11 @@ $zindex-modal-backdrop: 1040 !default;
 $zindex-modal: 1050 !default;
 $zindex-popover: 1060 !default;
 $zindex-tooltip: 1070 !default;
-// Layout
-$header-height: 60px;
+// Fonts
+$Poppins: "Poppins", sans-serif;
+$Cairo: "Cairo", sans-serif;
+$Gugi: "Gugi", cursive;
+$Major: "Major Mono Display", monospace;
 // Colors
 
 // Materials
@@ -66,6 +69,11 @@ $theme: "dark";
   display: flex;
   align-items: center;
   justify-content: center;
+}
+%between-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 %section {
   padding-top: 100px;

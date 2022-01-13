@@ -1,0 +1,8 @@
+$flex-values: center, between;
+@each $value in $flex-values {
+  .#{$value}-flex {
+    display: flex;
+    align-items: center;
+    justify-content: $value;
+  }
+}

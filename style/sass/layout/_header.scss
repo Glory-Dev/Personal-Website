@@ -5,7 +5,7 @@
   padding: 13px 0;
   z-index: $zindex-sticky;
   width: 100%;
-  min-height: $header-height;
+  min-height: 60px;
   background-color: transparent;
   box-shadow: 0 0 30px rgba(black, 0.5);
   transition: backdrop-filter $duration;
@@ -21,7 +21,11 @@
     .logo {
       color: red;
       display: block;
-      font-size: 25px;
+      font: {
+        size: 25px;
+        weight: bold;
+        family: $Major;
+      }
     }
     .navbar {
       display: flex;
@@ -31,19 +35,31 @@
       .links {
         display: flex;
         gap: 10px;
+        align-items: center;
 
         @include media(mobile) {
-          display: block;
+          flex-direction: column;
+          justify-content: center;
           position: absolute;
           top: calc(100% + 20px);
-          left: -100%;
-          width: 100%;
-          z-index: $zindex-dropdown;
-          background-color: rgba(#eee, 0.7);
-          transition: left $duration;
-        }
-        &.active {
           left: 0;
+          width: 100%;
+          height: calc(100vh - 60px);
+          z-index: $zindex-dropdown;
+          transition: transform $duration;
+          transform: scale(0) {
+            origin: bottom right;
+          }
+          &.active {
+            transform: scale(1) {
+              origin: bottom right;
+            }
+            transition: transform $duration;
+            &::before {
+              @include overlay(white, 0.9);
+              filter: blur(20px);
+            }
+          }
         }
 
         li {
@@ -58,11 +74,11 @@
             font-weight: 500;
             transition: color $duration;
             color: rgba(black, 0.5);
+            @include media(mobile) {
+              font-size: 35px;
+            }
             &:hover {
               color: black;
-              @include media(mobile) {
-                background-color: rgba(gray, 0.5);
-              }
             }
           }
         }
@@ -72,6 +88,7 @@
         padding: 0;
         width: 25px;
         height: 22px;
+        cursor: pointer;
         display: none;
         @include media(mobile) {
           display: flex;
